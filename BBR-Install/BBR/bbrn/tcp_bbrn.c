@@ -204,7 +204,7 @@ static const u32 bbr_extra_acked_win_rtts = 15;
 /* Max allowed val for ack_epoch_acked, after which sampling epoch is reset. */
 static const u32 bbr_ack_epoch_acked_reset_thresh = 1U << 20;
 /* Time period for clamping cwnd increment due to ACK aggregation. */
-static const u32 bbr_extra_acked_max_us = 200 * 1000;
+static const u32 bbr_extra_acked_max_us = 100 * 1000;
 
 static void bbr_check_probe_rtt_done(struct sock *sk);
 
@@ -1219,4 +1219,4 @@ MODULE_AUTHOR("Neal Cardwell <ncardwell@google.com>");
 MODULE_AUTHOR("Yuchung Cheng <ycheng@google.com>");
 MODULE_AUTHOR("Soheil Hassas Yeganeh <soheil@google.com>");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) @2026-07-10 17:21:41");
+MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) @2026-07-10 17:54:59");
