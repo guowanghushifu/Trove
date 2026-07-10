@@ -200,7 +200,7 @@ static const u32 bbr_lt_bw_max_rtts = 24;
 /* Gain factor for adding extra_acked to target cwnd; 1.5x in BBRx. */
 static const int bbr_extra_acked_gain = BBR_UNIT * 6 / 4;
 /* Window length of extra_acked window. */
-static const u32 bbr_extra_acked_win_rtts = 5;
+static const u32 bbr_extra_acked_win_rtts = 15;
 /* Max allowed val for ack_epoch_acked, after which sampling epoch is reset. */
 static const u32 bbr_ack_epoch_acked_reset_thresh = 1U << 20;
 /* Time period for clamping cwnd increment due to ACK aggregation. */
