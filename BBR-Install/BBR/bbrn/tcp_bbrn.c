@@ -190,10 +190,10 @@ static const u32 bbr_full_bw_cnt = 10;
 static const u32 bbr_lt_intvl_min_rtts = 4;
 /* If lost/delivered ratio > 20%, interval is "lossy" and we may be policed: */
 static const u32 bbr_lt_loss_thresh = 50;
-/* If 2 intervals have a bw ratio <= 1/2, their bw is "consistent": */
-static const u32 bbr_lt_bw_ratio = BBR_UNIT / 8;
-/* If 2 intervals have a bw diff <= 4 Mbit/sec, their bw is "consistent": */
-static const u32 bbr_lt_bw_diff = 4000 / 8;
+/* If 2 intervals have a bw ratio <= 1/4, their bw is "consistent": */
+static const u32 bbr_lt_bw_ratio = BBR_UNIT / 4;
+/* If 2 intervals have a bw diff <= 40 Kbit/sec, their bw is "consistent": */
+static const u32 bbr_lt_bw_diff = 40000 / 8;
 /* If we estimate we're policed, use lt_bw for this many round trips: */
 static const u32 bbr_lt_bw_max_rtts = 24;
 
