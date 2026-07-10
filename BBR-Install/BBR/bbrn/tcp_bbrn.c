@@ -143,9 +143,9 @@ struct bbr {
  */
 static const int bbr_bw_rtts = CYCLE_LEN + 2;
 /* Window length of the min_rtt filter, in seconds. */
-static const u32 bbr_min_rtt_win_sec = 180;
+static const u32 bbr_min_rtt_win_sec = 300;
 /* Minimum time spent at the cwnd floor in BBR_PROBE_RTT mode, in ms. */
-static const u32 bbr_probe_rtt_mode_ms = 100;
+static const u32 bbr_probe_rtt_mode_ms = 200;
 /* Skip TSO below the following bandwidth (bits/sec): */
 static const int bbr_min_tso_rate = 1200000;
 
@@ -204,7 +204,7 @@ static const u32 bbr_extra_acked_win_rtts = 15;
 /* Max allowed val for ack_epoch_acked, after which sampling epoch is reset. */
 static const u32 bbr_ack_epoch_acked_reset_thresh = 1U << 20;
 /* Time period for clamping cwnd increment due to ACK aggregation. */
-static const u32 bbr_extra_acked_max_us = 200 * 1000;
+static const u32 bbr_extra_acked_max_us = 100 * 1000;
 
 static void bbr_check_probe_rtt_done(struct sock *sk);
 
