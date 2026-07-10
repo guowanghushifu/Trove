@@ -143,7 +143,7 @@ struct bbr {
  */
 static const int bbr_bw_rtts = CYCLE_LEN + 2;
 /* Window length of the min_rtt filter, in seconds. */
-static const u32 bbr_min_rtt_win_sec = 300;
+static const u32 bbr_min_rtt_win_sec = 200;
 /* Minimum time spent at the cwnd floor in BBR_PROBE_RTT mode, in ms. */
 static const u32 bbr_probe_rtt_mode_ms = 200;
 /* Skip TSO below the following bandwidth (bits/sec): */
@@ -152,7 +152,7 @@ static const int bbr_min_tso_rate = 1200000;
 /* BBRx applies a 5% positive pacing margin on top of the selected pacing
  * gain.
  */
-static const int bbr_pacing_margin_percent = 5;
+static const int bbr_pacing_margin_percent = 10;
 
 /* BBRx uses an experimental STARTUP pacing gain of 6.0, making STARTUP
  * more aggressive than the BBRv1 default high_gain of 2/ln(2).
@@ -168,8 +168,8 @@ static const int bbr_cwnd_gain  = BBR_UNIT * 4;
 static const int bbr_pacing_gain[] = {
 	BBR_UNIT * 5 / 4,	/* probe for more available bw */
 	BBR_UNIT * 3 / 4,	/* drain queue and/or yield bw to other flows */
-	BBR_UNIT * 9 / 8, BBR_UNIT * 9 / 8, BBR_UNIT * 9 / 8,	/* cruise at 1.0*bw to utilize pipe, */
-	BBR_UNIT * 9 / 8, BBR_UNIT * 9 / 8, BBR_UNIT * 9 / 8	/* without creating excess queue... */
+	BBR_UNIT, BBR_UNIT, BBR_UNIT,	/* cruise at 1.0*bw to utilize pipe, */
+	BBR_UNIT, BBR_UNIT, BBR_UNIT	/* without creating excess queue... */
 };
 /* Randomize the starting gain cycling phase over N phases: */
 static const u32 bbr_cycle_rand = 7;
@@ -183,7 +183,7 @@ static const u32 bbr_cwnd_min_target = 200;
 /* If bw has increased by at least 5%, there may be more bw available. */
 static const u32 bbr_full_bw_thresh = BBR_UNIT * 105 / 100;
 /* After 5 rounds without that growth, BBRx estimates the pipe is full. */
-static const u32 bbr_full_bw_cnt = 5;
+static const u32 bbr_full_bw_cnt = 10;
 
 /* "long-term" ("LT") bandwidth estimator parameters... */
 /* The minimum number of rounds in an LT bw sampling interval: */
@@ -204,7 +204,7 @@ static const u32 bbr_extra_acked_win_rtts = 15;
 /* Max allowed val for ack_epoch_acked, after which sampling epoch is reset. */
 static const u32 bbr_ack_epoch_acked_reset_thresh = 1U << 20;
 /* Time period for clamping cwnd increment due to ACK aggregation. */
-static const u32 bbr_extra_acked_max_us = 100 * 1000;
+static const u32 bbr_extra_acked_max_us = 200 * 1000;
 
 static void bbr_check_probe_rtt_done(struct sock *sk);
 
