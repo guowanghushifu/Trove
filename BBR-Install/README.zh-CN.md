@@ -58,7 +58,7 @@ sudo apt-get install -y ca-certificates curl
 ## 快速开始
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Trove/refs/heads/main/BBR-Install/BBRInstall.sh) --lang zh-CN --algo bbrx
+bash <(wget -qO- https://raw.githubusercontent.com/guowanghushifu/Trove/refs/heads/main/BBR-Install/BBRInstall.sh) --lang zh-CN --algo bbrx
 ```
 
 在非交互模式中，请始终通过 `--algo` 或 `BBR_ALGO` 指定算法。

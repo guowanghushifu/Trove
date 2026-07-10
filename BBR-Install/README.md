@@ -59,7 +59,7 @@ sudo apt-get install -y ca-certificates curl
 Download the script, review it, then run it with the algorithm you want:
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/jerry048/Trove/refs/heads/main/BBR-Install/BBRInstall.sh) --algo bbrx
+bash <(wget -qO- https://raw.githubusercontent.com/guowanghushifu/Trove/refs/heads/main/BBR-Install/BBRInstall.sh) --algo bbrx
 ```
 In non-interactive mode, always provide `--algo` or `BBR_ALGO`.
 
