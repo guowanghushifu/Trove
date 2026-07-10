@@ -9,7 +9,7 @@ set -Eeuo pipefail
 IFS=$'\n\t'
 
 SCRIPT_NAME="${0##*/}"
-DEFAULT_RAW_BASE="https://raw.githubusercontent.com/jerry048/Trove/refs/heads/main/BBR-Install/BBR"
+DEFAULT_RAW_BASE="https://raw.githubusercontent.com/guowanghushifu/Trove/refs/heads/main/BBR-Install/BBR"
 
 # Environment overrides for advanced users / tests.
 RAW_BASE="${RAW_BASE:-$DEFAULT_RAW_BASE}"
@@ -25,7 +25,7 @@ KERNEL_MAX_VERSION="${BBR_KERNEL_MAX_VERSION:-7.1.999}"
 LANG_CODE="${BBR_LANG:-en}"
 SHOW_HELP=0
 
-SUPPORTED_ALGOS=("bbrv3" "bbrx" "bbrw" "bbr_brutal" "bbrw_brutal")
+SUPPORTED_ALGOS=("bbrv3" "bbrx"  "bbrn" "bbrw" "bbr_brutal" "bbrw_brutal")
 WORK_DIR_CREATED=""
 WORK_DIR_IS_AUTO=0
 
