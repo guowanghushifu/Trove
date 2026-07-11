@@ -152,7 +152,7 @@ static const int bbr_min_tso_rate = 1200000;
 /* BBRx applies a 5% positive pacing margin on top of the selected pacing
  * gain.
  */
-static const int bbr_pacing_margin_percent = 5;
+static const int bbr_pacing_margin_percent = 8;
 
 /* BBRx uses an experimental STARTUP pacing gain of 6.0, making STARTUP
  * more aggressive than the BBRv1 default high_gain of 2/ln(2).
