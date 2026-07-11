@@ -1016,7 +1016,7 @@ static void bbr_update_gains(struct sock *sk)
 		break;
 	case BBR_PROBE_BW:
 		bbr->pacing_gain = (bbr->lt_use_bw ?
-				    BBR_UNIT :
+				    BBR_UNIT * 105 / 100:
 				    bbr_pacing_gain[bbr->cycle_idx]);
 		bbr->cwnd_gain	 = bbr_cwnd_gain;
 		break;
@@ -1219,4 +1219,4 @@ MODULE_AUTHOR("Neal Cardwell <ncardwell@google.com>");
 MODULE_AUTHOR("Yuchung Cheng <ycheng@google.com>");
 MODULE_AUTHOR("Soheil Hassas Yeganeh <soheil@google.com>");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-11 23:41:39");
+MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-12 00:15:15");
