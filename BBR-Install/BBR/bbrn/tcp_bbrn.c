@@ -152,7 +152,7 @@ static const int bbr_min_tso_rate = 1200000;
 /* BBRx applies a 5% positive pacing margin on top of the selected pacing
  * gain.
  */
-static const int bbr_pacing_margin_percent = 8;
+static const int bbr_pacing_margin_percent = 5;
 
 /* BBRx uses an experimental STARTUP pacing gain of 6.0, making STARTUP
  * more aggressive than the BBRv1 default high_gain of 2/ln(2).
@@ -168,8 +168,8 @@ static const int bbr_cwnd_gain  = BBR_UNIT * 4;
 static const int bbr_pacing_gain[] = {
 	BBR_UNIT * 5 / 4,	/* probe for more available bw */
 	BBR_UNIT * 3 / 4,	/* drain queue and/or yield bw to other flows */
-	BBR_UNIT, BBR_UNIT, BBR_UNIT,	/* cruise at 1.0*bw to utilize pipe, */
-	BBR_UNIT, BBR_UNIT, BBR_UNIT	/* without creating excess queue... */
+	BBR_UNIT, BBR_UNIT * 11 / 10, BBR_UNIT,	/* cruise at 1.0*bw to utilize pipe, */
+	BBR_UNIT * 11 / 10, BBR_UNIT, BBR_UNIT * 11 / 10	/* without creating excess queue... */
 };
 /* Randomize the starting gain cycling phase over N phases: */
 static const u32 bbr_cycle_rand = 7;
@@ -1219,4 +1219,4 @@ MODULE_AUTHOR("Neal Cardwell <ncardwell@google.com>");
 MODULE_AUTHOR("Yuchung Cheng <ycheng@google.com>");
 MODULE_AUTHOR("Soheil Hassas Yeganeh <soheil@google.com>");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-11 16:41:49");
+MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-11 19:04:02");
