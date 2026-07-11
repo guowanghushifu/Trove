@@ -198,13 +198,13 @@ static const u32 bbr_lt_bw_diff = 400000 / 8;
 static const u32 bbr_lt_bw_max_rtts = 48;
 
 /* Gain factor for adding extra_acked to target cwnd; 1.5x in BBRx. */
-static const int bbr_extra_acked_gain = BBR_UNIT * 6 / 4;
+static const int bbr_extra_acked_gain = BBR_UNIT;
 /* Window length of extra_acked window. */
-static const u32 bbr_extra_acked_win_rtts = 15;
+static const u32 bbr_extra_acked_win_rtts = 5;
 /* Max allowed val for ack_epoch_acked, after which sampling epoch is reset. */
 static const u32 bbr_ack_epoch_acked_reset_thresh = 1U << 20;
 /* Time period for clamping cwnd increment due to ACK aggregation. */
-static const u32 bbr_extra_acked_max_us = 25 * 1000;
+static const u32 bbr_extra_acked_max_us = 100 * 1000;
 
 static void bbr_check_probe_rtt_done(struct sock *sk);
 
@@ -706,7 +706,7 @@ static void bbr_lt_bw_interval_done(struct sock *sk, u32 bw)
 			/* All criteria are met; estimate we're policed. */
 			bbr->lt_bw = (bw + bbr->lt_bw) >> 1;  /* avg 2 intvls */
 			bbr->lt_use_bw = 1;
-			bbr->pacing_gain = BBR_UNIT * 105 / 100;  /* try to avoid drops */
+			bbr->pacing_gain = BBR_UNIT;  /* try to avoid drops */
 			bbr->lt_rtt_cnt = 0;
 			return;
 		}
@@ -1016,7 +1016,7 @@ static void bbr_update_gains(struct sock *sk)
 		break;
 	case BBR_PROBE_BW:
 		bbr->pacing_gain = (bbr->lt_use_bw ?
-				    BBR_UNIT * 105 / 100:
+				    BBR_UNIT :
 				    bbr_pacing_gain[bbr->cycle_idx]);
 		bbr->cwnd_gain	 = bbr_cwnd_gain;
 		break;
@@ -1219,4 +1219,4 @@ MODULE_AUTHOR("Neal Cardwell <ncardwell@google.com>");
 MODULE_AUTHOR("Yuchung Cheng <ycheng@google.com>");
 MODULE_AUTHOR("Soheil Hassas Yeganeh <soheil@google.com>");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-12 00:15:15");
+MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-12 07:05:24");
