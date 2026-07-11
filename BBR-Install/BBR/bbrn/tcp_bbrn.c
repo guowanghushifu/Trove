@@ -143,7 +143,7 @@ struct bbr {
  */
 static const int bbr_bw_rtts = CYCLE_LEN + 2;
 /* Window length of the min_rtt filter, in seconds. */
-static const u32 bbr_min_rtt_win_sec = 200;
+static const u32 bbr_min_rtt_win_sec = 180;
 /* Minimum time spent at the cwnd floor in BBR_PROBE_RTT mode, in ms. */
 static const u32 bbr_probe_rtt_mode_ms = 200;
 /* Skip TSO below the following bandwidth (bits/sec): */
@@ -192,19 +192,19 @@ static const u32 bbr_lt_intvl_min_rtts = 2;
 static const u32 bbr_lt_loss_thresh = 50;
 /* If 2 intervals have a bw ratio <= 1/4, their bw is "consistent": */
 static const u32 bbr_lt_bw_ratio = BBR_UNIT / 4;
-/* If 2 intervals have a bw diff <= 40 Kbit/sec, their bw is "consistent": */
-static const u32 bbr_lt_bw_diff = 40000 / 8;
+/* If 2 intervals have a bw diff <= 4 Kbit/sec, their bw is "consistent": */
+static const u32 bbr_lt_bw_diff = 4000 / 8;
 /* If we estimate we're policed, use lt_bw for this many round trips: */
 static const u32 bbr_lt_bw_max_rtts = 48;
 
 /* Gain factor for adding extra_acked to target cwnd; 1.5x in BBRx. */
 static const int bbr_extra_acked_gain = BBR_UNIT * 6 / 4;
 /* Window length of extra_acked window. */
-static const u32 bbr_extra_acked_win_rtts = 10;
+static const u32 bbr_extra_acked_win_rtts = 15;
 /* Max allowed val for ack_epoch_acked, after which sampling epoch is reset. */
 static const u32 bbr_ack_epoch_acked_reset_thresh = 1U << 20;
 /* Time period for clamping cwnd increment due to ACK aggregation. */
-static const u32 bbr_extra_acked_max_us = 100 * 1000;
+static const u32 bbr_extra_acked_max_us = 25 * 1000;
 
 static void bbr_check_probe_rtt_done(struct sock *sk);
 
@@ -1219,4 +1219,4 @@ MODULE_AUTHOR("Neal Cardwell <ncardwell@google.com>");
 MODULE_AUTHOR("Yuchung Cheng <ycheng@google.com>");
 MODULE_AUTHOR("Soheil Hassas Yeganeh <soheil@google.com>");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) @ 2026-07-11 00:16:40");
+MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) （2026-07-11 15:00:09）");
