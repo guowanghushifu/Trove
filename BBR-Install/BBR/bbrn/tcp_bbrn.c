@@ -191,7 +191,7 @@ static const u32 bbr_lt_intvl_min_rtts = 2;
 /* If lost/delivered ratio > 20%, interval is "lossy" and we may be policed: */
 static const u32 bbr_lt_loss_thresh = 50;
 /* If 2 intervals have a bw ratio <= 1/4, their bw is "consistent": */
-static const u32 bbr_lt_bw_ratio = BBR_UNIT / 4;
+static const u32 bbr_lt_bw_ratio = BBR_UNIT / 3;
 /* If 2 intervals have a bw diff <= 4 Kbit/sec, their bw is "consistent": */
 static const u32 bbr_lt_bw_diff = 4000 / 8;
 /* If we estimate we're policed, use lt_bw for this many round trips: */
@@ -1219,4 +1219,4 @@ MODULE_AUTHOR("Neal Cardwell <ncardwell@google.com>");
 MODULE_AUTHOR("Yuchung Cheng <ycheng@google.com>");
 MODULE_AUTHOR("Soheil Hassas Yeganeh <soheil@google.com>");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-11 22:28:21");
+MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-11 23:02:40");
