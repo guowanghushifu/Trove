@@ -706,7 +706,7 @@ static void bbr_lt_bw_interval_done(struct sock *sk, u32 bw)
 			/* All criteria are met; estimate we're policed. */
 			bbr->lt_bw = (bw + bbr->lt_bw) >> 1;  /* avg 2 intvls */
 			bbr->lt_use_bw = 1;
-			bbr->pacing_gain = BBR_UNIT;  /* try to avoid drops */
+			bbr->pacing_gain = BBR_UNIT * 105 / 100;  /* try to avoid drops */
 			bbr->lt_rtt_cnt = 0;
 			return;
 		}
@@ -1219,4 +1219,4 @@ MODULE_AUTHOR("Neal Cardwell <ncardwell@google.com>");
 MODULE_AUTHOR("Yuchung Cheng <ycheng@google.com>");
 MODULE_AUTHOR("Soheil Hassas Yeganeh <soheil@google.com>");
 MODULE_LICENSE("Dual BSD/GPL");
-MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-11 23:02:40");
+MODULE_DESCRIPTION("TCP BBRn (BBR variant for DKMS) Date: 2026-07-11 23:41:39");
