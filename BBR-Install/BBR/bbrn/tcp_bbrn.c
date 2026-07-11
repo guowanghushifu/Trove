@@ -204,7 +204,7 @@ static const u32 bbr_extra_acked_win_rtts = 15;
 /* Max allowed val for ack_epoch_acked, after which sampling epoch is reset. */
 static const u32 bbr_ack_epoch_acked_reset_thresh = 1U << 20;
 /* Time period for clamping cwnd increment due to ACK aggregation. */
-static const u32 bbr_extra_acked_max_us = 25 * 1000;
+static const u32 bbr_extra_acked_max_us = 50 * 1000;
 
 static void bbr_check_probe_rtt_done(struct sock *sk);
 
